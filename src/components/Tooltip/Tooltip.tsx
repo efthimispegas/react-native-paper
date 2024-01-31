@@ -203,7 +203,6 @@ const Tooltip = ({
               selectable={false}
               variant="labelLarge"
               style={{ color: theme.colors.surface }}
-              maxFontSizeMultiplier={titleMaxFontSizeMultiplier}
             >
               {title}
             </Text>
@@ -218,7 +217,7 @@ const Tooltip = ({
       >
         {React.cloneElement(children, {
           ...rest,
-          ...(isWeb ? webPressProps : mobilePressProps),
+          ...mobilePressProps,
         })}
       </Pressable>
     </>

@@ -70,9 +70,9 @@ const getTooltipYPosition = (
   { pageY: childrenY, height: childrenHeight }: ChildrenMeasurement,
   { height: tooltipHeight }: TooltipLayout
 ): number => {
-  if (overflowBottom(childrenY, childrenHeight, tooltipHeight))
+  if (!overflowBottom(childrenY, childrenHeight, tooltipHeight)) {
     return childrenY - tooltipHeight;
-
+  }
   return childrenY + childrenHeight;
 };
 
