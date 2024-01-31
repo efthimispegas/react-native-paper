@@ -41,6 +41,10 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
    * testID to be used on tests.
    */
   testID?: string;
+  /**
+   * style overrides to be applied on chcekbox.
+   */
+  styleOverrides?: Record<string, any>;
 };
 
 // From https://material.io/design/motion/speed.html#duration
@@ -56,6 +60,7 @@ const ANIMATION_DURATION = 100;
 const CheckboxAndroid = ({
   status,
   theme: themeOverrides,
+  styleOverrides,
   disabled,
   onPress,
   testID,
@@ -129,7 +134,7 @@ const CheckboxAndroid = ({
       accessibilityRole="checkbox"
       accessibilityState={{ disabled, checked }}
       accessibilityLiveRegion="polite"
-      style={styles.container}
+      style={[styles.container, styleOverrides]}
       testID={testID}
       theme={theme}
     >

@@ -32,6 +32,10 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
    * testID to be used on tests.
    */
   testID?: string;
+  /**
+   * style overrides to be applied on chcekbox.
+   */
+  styleOverrides?: Record<string, any>;
 };
 
 /**
@@ -46,6 +50,7 @@ const CheckboxIOS = ({
   disabled,
   onPress,
   theme: themeOverrides,
+  styleOverrides,
   testID,
   ...rest
 }: Props) => {
@@ -72,15 +77,15 @@ const CheckboxIOS = ({
       accessibilityRole="checkbox"
       accessibilityState={{ disabled, checked }}
       accessibilityLiveRegion="polite"
-      style={styles.container}
+      style={[styles.container, styleOverrides]}
       testID={testID}
       theme={theme}
     >
-      <View style={{ opacity }}>
+      <View style={{ opacity, margin: 2 }}>
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={24}
+          size={16}
           color={checkedColor}
           direction="ltr"
         />
@@ -93,8 +98,9 @@ CheckboxIOS.displayName = 'Checkbox.IOS';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    padding: 6,
+    borderRadius: 5,
+    margin: 4,
+    borderWidth: 2,
   },
 });
 

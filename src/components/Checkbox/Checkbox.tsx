@@ -35,6 +35,14 @@ export type Props = {
    * testID to be used on tests.
    */
   testID?: string;
+  /**
+   * size of checkbox icon
+   */
+  size?: number;
+  /**
+   * styles to be applied on checkbox.
+   */
+  styleOverrides?: Record<string, any>;
 };
 
 /**
@@ -61,12 +69,22 @@ export type Props = {
  * export default MyComponent;
  * ```
  */
-const Checkbox = ({ theme: themeOverrides, ...props }: Props) => {
+const Checkbox = ({
+  theme: themeOverrides,
+  styleOverrides,
+  size,
+  ...props
+}: Props) => {
   const theme = useInternalTheme(themeOverrides);
   return Platform.OS === 'ios' ? (
-    <CheckboxIOS {...props} theme={theme} />
+    <CheckboxIOS
+      {...props}
+      styleOverrides={styleOverrides}
+      size={size}
+      theme={theme}
+    />
   ) : (
-    <CheckboxAndroid {...props} theme={theme} />
+    <CheckboxAndroid {...props} styleOverrides={styleOverrides} theme={theme} />
   );
 };
 

@@ -106,6 +106,10 @@ export type Props = {
    * Left undefined `<Checkbox />` will be used.
    */
   mode?: 'android' | 'ios';
+  /**
+   * style overrides to be applied on chcekbox.
+   */
+  styleOverrides?: Record<string, any>;
 };
 
 /**
@@ -128,7 +132,6 @@ export type Props = {
  */
 
 const CheckboxItem = ({
-  style,
   status,
   label,
   onPress,
@@ -187,7 +190,7 @@ const CheckboxItem = ({
       background={background}
     >
       <View
-        style={[styles.container, style]}
+        style={styles.container}
         pointerEvents="none"
         importantForAccessibility="no-hide-descendants"
       >
